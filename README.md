@@ -39,6 +39,23 @@ Spring Boot를 이용한 DI/IoC, Web MVC, DB 접근 기술에 대한 학습을 �
 
 > 빌드를 지우고 싶거나 새로 빌드를 하고 싶은 경우 `./gradlew clean 또는 ./gradlew clean build` 명령어 입력
 
+## 정적 컨텐츠
+
+1. 정적(Static) 컨텐츠 페이지 요청 과정
+   ![정적 컨텐츠 페이지 요청 과정](images/02.jpg)
+    - Spring Boot 내장 Tomcat 서버가 웹 브라우저의 요청을 받아서 스프링 컨테이너에 URL 매핑 정보가 있는 Controller가 있는지 찾는다.
+    - 만약, URL 매핑 정보가 없다면, Spring Boot 내부적으로 처리한다.
+        - resources:static/[폴더명]/[파일명]
+
+## MVC와 템플릿 엔진
+
+> MVC : Model, View, Controller
+
+1. MVC 템플릿 요청 과정
+   ![MVC 템플릿 요청 과정](images/03.jpg)
+    - Spring Boot 내장 Tomcat 서버가 웹 브라우저의 요청을 받아서 스프링 컨테이너에 URL 매핑 정보가 있는 Controller가 있는지 찾는다.
+    - 만약, URL 매핑 정보가 있다면 기타 로직을 실행한 후 `ViewResolver`와 템플릿(Thymeleaf) 엔진 처리를 통해 HTML로 렌더링하여 웹 브라우저에 화면을 출력하게 된다.
+
 ## 참고자료
 
 1. [스프링 공식 튜토리얼 : https://spring.io/guides/gs/serving-web-content](https://spring.io/guides/gs/serving-web-content)
