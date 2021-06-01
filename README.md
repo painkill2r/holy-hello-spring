@@ -54,7 +54,19 @@ Spring Boot를 이용한 DI/IoC, Web MVC, DB 접근 기술에 대한 학습을 �
 1. MVC 템플릿 요청 과정
    ![MVC 템플릿 요청 과정](images/03.jpg)
     - Spring Boot 내장 Tomcat 서버가 웹 브라우저의 요청을 받아서 스프링 컨테이너에 URL 매핑 정보가 있는 Controller가 있는지 찾는다.
-    - 만약, URL 매핑 정보가 있다면 기타 로직을 실행한 후 `ViewResolver`와 템플릿(Thymeleaf) 엔진 처리를 통해 HTML로 렌더링하여 웹 브라우저에 화면을 출력하게 된다.
+    - 만약, URL 매핑 정보가 있다면 기타 로직을 실행한 후 `ViewResolver`와 `템플릿(Thymeleaf) 엔진` 처리를 통해 HTML로 렌더링하여 웹 브라우저에 화면을 출력하게 된다.
+
+## API
+
+1. @ResponseBody 사용 원리
+   ![@ResponseBody 사용 원리](images/04.jpg)
+    - Spring Boot 내장 Tomcat 서버가 웹 브라우저의 요청을 받아서 스프링 컨테이너에 존재하는 Controller에 요청 처리를 위힘한다.
+    - 기존에는 ViewResolver와 템플릿 엔진 처리를 통해 HTML로 렌더링하여 웹 브라우저에 화면을 출력하였다면, `@ResponseBody`가 붙어 있는 경우 HTTP 응답에 데이터를 반환한다.
+        1. 기본적으로 JSON 방식으로 데이터를 만들어서 `HTTP 응답 BODY`에 반환.
+        2. ViewResolver 대신에 HttpMessageConverter가 동작
+            - 기본 문자 처리 : `StringMessageConverter`
+            - 기본 객체 처리 : `MappingJackson2HttpMessageConverter`
+            - Byte 처리 등 기타 여러 HttpMessageConverter가 등록되어 있음.
 
 ## 참고자료
 
