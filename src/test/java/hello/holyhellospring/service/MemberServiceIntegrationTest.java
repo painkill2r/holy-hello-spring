@@ -1,39 +1,27 @@
 package hello.holyhellospring.service;
 
 import hello.holyhellospring.domain.Member;
-import hello.holyhellospring.repository.MemoryMemberRepository;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
+import hello.holyhellospring.repository.MemberRepository;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
- * 단위 테스트
+ * 통합 테스트
  */
-class MemberServiceTest {
+@SpringBootTest // 스프링 부트 테스트 및 트랜잭션 설정
+@Transactional
+        // Test 후 Rollback을 하기 위한 설정
+class MemberServiceIntegrationTest {
 
+    @Autowired
     MemberService memberService;
-    MemoryMemberRepository memberRepository;
-
-    /**
-     * 테스트 전 실행하는 메소드
-     */
-    @BeforeEach
-    public void beforeEach() {
-        memberRepository = new MemoryMemberRepository();
-        memberService = new MemberService(memberRepository); // DI
-    }
-
-    /**
-     * 각 테스트가 끝날때마다 실행하는 메소드
-     */
-    @AfterEach
-    public void afterEach() {
-        memberRepository.clearStore();
-    }
-
+    @Autowired
+    MemberRepository memberRepository;
 
     @Test
     void 회원가입() {

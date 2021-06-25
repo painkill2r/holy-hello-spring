@@ -25,6 +25,12 @@ public class SpringConfig {
         return new MemberService(memberRepository());
     }
 
+    /**
+     * Repository Bean 설정
+     * 상황에 따라 MemoryMemberRepository, JdbcMemberRepository Type의 Bean을 생성한다.
+     *
+     * @return
+     */
     @Bean
     public MemberRepository memberRepository() {
         //return new MemoryMemberRepository();
