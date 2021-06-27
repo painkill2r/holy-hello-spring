@@ -3,9 +3,12 @@ package hello.holyhellospring.service;
 import hello.holyhellospring.domain.Member;
 import hello.holyhellospring.repository.MemberRepository;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
+// JPA를 사용하기 위해 트랜잭션 설정
+@Transactional
 public class MemberService {
 
     private final MemberRepository memberRepository;
