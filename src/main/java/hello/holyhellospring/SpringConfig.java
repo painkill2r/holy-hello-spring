@@ -1,6 +1,7 @@
 package hello.holyhellospring;
 
 import hello.holyhellospring.repository.JdbcMemberRepository;
+import hello.holyhellospring.repository.JdbcTemplateMemberRepository;
 import hello.holyhellospring.repository.MemberRepository;
 import hello.holyhellospring.repository.MemoryMemberRepository;
 import hello.holyhellospring.service.MemberService;
@@ -27,13 +28,13 @@ public class SpringConfig {
 
     /**
      * Repository Bean 설정
-     * 상황에 따라 MemoryMemberRepository, JdbcMemberRepository Type의 Bean을 생성한다.
      *
      * @return
      */
     @Bean
     public MemberRepository memberRepository() {
         //return new MemoryMemberRepository();
-        return new JdbcMemberRepository(dataSource);
+        //return new JdbcMemberRepository(dataSource);
+        return new JdbcTemplateMemberRepository(dataSource);
     }
 }
