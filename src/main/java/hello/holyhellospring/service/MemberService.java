@@ -30,9 +30,7 @@ public class MemberService {
      */
     public Long join(Member member) {
         validateDuplicateMember(member);
-
         memberRepository.save(member);
-
         return member.getId();
     }
 
